@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Planner Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pixel.css">
+</head>
+<body>
+  <div class="photo-background"></div>
+  <div class="photo-overlay"></div>
+  <div class="pixel-overlay"></div> 
+ 
+  <!-- Login Form -->
+  <div class="login-container" id="login-container">
+    <div class="pixel-login-box">
+      <h1>Focus Fury!</h1>
+      <form id="login-form" class="pixel-form">
+        <div class="form-group">
+          <input type="text" id="username" class="pixel-input" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" class="pixel-input" placeholder="Password" required>
+        </div>
+        <button type="submit" class="pixel-button">LOGIN</button>
+        <button type="button" id="register-btn" class="pixel-button">REGISTER</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main App (Hidden initially) -->
+  <div class="pixel-app" id="main-app" style="display: none;">
+    <div class="avatar-section">
+      <div class="avatar-container">
+        <div class="avatar" id="avatar">
+          <img src="ajgwapo.png" alt="Player Avatar" class="avatar-image">
+          <div class="aura" id="aura"></div>
+        </div>
+        <div class="avatar-stats">
+          <div>Lvl: <span id="avatar-level">1</span></div>
+          <div>XP: <span id="avatar-xp">0</span>/100</div>
+        </div>
+        <input type="text" id="avatar-name" class="pixel-input name-input" value="User" maxlength="12" style="margin-top:10px; width:100%; text-align:center;">
+      </div>
+    </div>
+    
+    <header class="pixel-header">
+      <h1>Focus Fury!</h1>
+      <nav class="pixel-menu">
+        <button class="menu-btn active" data-view="tasks">Tasks</button>
+        <button class="menu-btn" data-view="calendar">Calendar</button>
+        <button class="menu-btn" data-view="shop">Shop</button>
+        <button class="menu-btn" data-view="decoration">Decoration</button>
+      </nav>
+    </header>
+    
+    <main>
+      <!-- Tasks View -->
+      <div class="view" id="tasks-view">
+        <h2>What should I do today?</h2>
+        <div class="task-input-section">
+          <div class="task-input-row">
+            <input type="text" id="new-task" class="pixel-input" placeholder="Add task...">
+            <select id="task-difficulty" class="pixel-select">
+              <option value="10">Easy</option>
+              <option value="20">Medium</option>
+              <option value="30">Hard</option>
+            </select>
+            <input type="date" id="task-due-date" class="pixel-input pixel-date">
+            <input type="time" id="task-due-time" class="pixel-input pixel-time">
+            <button id="add-task" class="pixel-button">ADD</button>
+          </div>
+        </div>
+        <div class="task-list" id="task-list">
+          <!-- Tasks will be inserted here -->
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="xp-bar"></div>
+          </div>
+          <div class="progress-info">
+            Level <span id="level">1</span> • 
+            <span id="xp">0</span>/<span id="next-level">100</span> XP • 
+            Coins: <span id="coins">50</span> 🟡
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar View -->
+      <div class="view hidden" id="calendar-view">
+        <h2>Your Streaks</h2>
+        <div class="pixel-calendar">
+          <div class="calendar-header">
+            <button class="pixel-button prev-month">&lt;</button>
+            <h3 id="calendar-month">April 2024</h3>
+            <button class="pixel-button next-month">&gt;</button>
+          </div>
+          <div class="calendar-grid"></div>
+          <div class="streak-info">
+            <p>Current streak: <span id="current-streak">0</span> days 🔥</p>
+            <p>Longest streak: <span id="longest-streak">0</span> days</p>
+          </div>
+        </div>
+        <div class="inventory">
+          <h3>Your Inventory</h3>
+          <div id="inventory-items-calendar"></div>
+        </div>
+      </div>
+
+      <!-- Shop View -->
+      <div class="view hidden" id="shop-view">
+        <h2>Pixel Shop</h2>
+        <div class="coin-display">
+          Your coins: <span id="shop-coins">50</span> 🟡
+        </div>
+        <div class="shop-items" id="shop-items"></div>
+        <div class="inventory">
+          <h3>Your Inventory</h3>
+          <div id="inventory-items-shop"></div>
+        </div>
+      </div>
+
+      <!-- Decoration View -->
+      <div class="view hidden" id="decoration-view">
+        <h2>Decoration Area</h2>
+        <div class="inventory">
+          <h3>Your Inventory</h3>
+          <div id="inventory-items-decoration"></div>
+        </div>
+        <div class="planner-background" id="planner-background"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
